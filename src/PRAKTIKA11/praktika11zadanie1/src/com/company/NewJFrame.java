@@ -12,6 +12,11 @@ import javax.swing.JOptionPane;
 public class NewJFrame extends javax.swing.JFrame {
     private int num;
     private int attempts = 2;
+    private javax.swing.JTextArea inputField;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JToggleButton jToggleButton2;
 
     public NewJFrame() {
         Random rand = new Random();
@@ -146,9 +151,5 @@ public class NewJFrame extends javax.swing.JFrame {
         });
     }
 
-    private javax.swing.JTextArea inputField;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
+
 }
