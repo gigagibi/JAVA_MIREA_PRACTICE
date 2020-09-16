@@ -10,7 +10,6 @@ public class MainWindow extends JFrame{
         setSize(800, 600);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocation(500, 300);
-        JLayeredPane lp = getLayeredPane();
         setVisible(true);
         setResizable(false);
         add(new DrawPanel());
