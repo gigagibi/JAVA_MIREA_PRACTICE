@@ -29,4 +29,12 @@ public class MovablePoint implements Movable{
         this.x+=right;
         this.y+=down;
     }
+
+    @Override
+    public String toString() {
+        return "MovablePoint{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
+    }
 }
