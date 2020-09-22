@@ -27,12 +27,12 @@ public class MovableRectangle implements Movable {
 
     public double getArea()
     {
-        return abs(topLeft.getY() - bottomRight.getY()) * abs(topLeft.getX() - bottomRight.getX());
+        return getWidth() * getLength();
     }
 
     public double getPerimeter()
     {
-        return 2*(abs(topLeft.getY() - bottomRight.getY()) + abs(topLeft.getX() - bottomRight.getX()));
+        return 2*(getWidth() + getLength());
     }
 
 
