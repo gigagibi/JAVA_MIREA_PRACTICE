@@ -33,18 +33,16 @@ public class Problem {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int max = 0;
-        field = new int[n][n];
+        //field = new int[n][n];
 
-        for(int i = 0; i < n; i++)
+        /*for(int i = 0; i < n; i++)
         {
             for(int j = 0; j < n; j++)
             {
                 field[i][j] = (int)(Math.random() * 100 - 50);
             }
-        }
-
-
-
+        }*/
+        field = { {1, 2, 3}, {3, -4, 5}, {-9, 13, 4} };
 
         for(int i = 0; i < n; i++)
         {
