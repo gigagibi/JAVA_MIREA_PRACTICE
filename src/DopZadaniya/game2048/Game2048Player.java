@@ -11,7 +11,7 @@ public abstract class Game2048Player {
         while (game2048Field.isMoveAvailable()) {
             System.out.println(game2048Field);
             step();
-            Thread.sleep(100);
+            Thread.sleep(300);
         }
         System.out.println("GAME OVER");
         System.out.println(game2048Field);
