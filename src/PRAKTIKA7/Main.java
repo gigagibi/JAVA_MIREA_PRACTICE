@@ -33,7 +33,10 @@ public class Main {
         company.hire(employeer2);
         Employee employeer3 = new Employee("Чебуратор", 150000, new TopManager());
         company.hire(employeer3);
-        System.out.println(company.getLowestSalaryStaff(3));
+        for(int i = 0; i < company.getLowestSalaryStaff(3).size(); i++)
+        {
+            System.out.println(company.getLowestSalaryStaff(3).get(i).getSalary());
+        }
     }
 
 }
