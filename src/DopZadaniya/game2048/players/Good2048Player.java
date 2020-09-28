@@ -44,13 +44,13 @@ public class Good2048Player extends Game2048Player {
                 case 0:
                     game2048Field2.moveRight();
                     count = 0;
-                    if(game2048Field.getMaxValue() < 500)
+                    if(game2048Field.getMaxValue() < 2048)
                     {
-                        count  = 100;
+                        count  = 500;
                     }
                     else
                     {
-                        count = 100;
+                        count = 5000;
                     }
                     for (int i = 0; i < count; i++) {
                         randomPlayer.startGameOnMind();
@@ -63,6 +63,7 @@ public class Good2048Player extends Game2048Player {
                                 MaxGenScore += (double)game2048Field2.getCells()[a][b].getCell().getValue();
                             }
                         }
+
                         //game2048Field2 = (GameField) game2048Field;
                         game2048Field2 = new GameField(this.game2048Field.getSize());
                         equate(game2048Field2, (GameField)game2048Field);
@@ -74,13 +75,13 @@ public class Good2048Player extends Game2048Player {
                 case 1:
                     game2048Field2.moveLeft();
                     count = 0;
-                    if(game2048Field.getMaxValue() < 500)
+                    if(game2048Field.getMaxValue() < 2048)
                     {
-                        count  = 100;
+                        count  = 500;
                     }
                     else
                     {
-                        count = 100;
+                        count = 5000;
                     }
                     for (int i = 0; i < count; i++) {
                         randomPlayer.startGameOnMind();
@@ -103,13 +104,13 @@ public class Good2048Player extends Game2048Player {
                 case 2:
                     game2048Field2.moveUp();
                     count = 0;
-                    if(game2048Field.getMaxValue() < 500)
+                    if(game2048Field.getMaxValue() < 2048)
                     {
-                        count  = 100;
+                        count  = 500;
                     }
                     else
                     {
-                        count = 100;
+                        count = 5000;
                     }
                     for (int i = 0; i < count; i++) {
                         randomPlayer.startGameOnMind();
@@ -132,13 +133,13 @@ public class Good2048Player extends Game2048Player {
                 case 3:
                     game2048Field2.moveDown();
                     count = 0;
-                    if(game2048Field.getMaxValue() < 500)
+                    if(game2048Field.getMaxValue() < 2048)
                     {
-                        count  = 100;
+                        count  = 500;
                     }
                     else
                     {
-                        count = 100;
+                        count = 5000;
                     }
                     for (int i = 0; i < count; i++) {
                         randomPlayer.startGameOnMind();
