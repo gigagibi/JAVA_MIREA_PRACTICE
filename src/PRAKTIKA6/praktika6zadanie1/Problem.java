@@ -1,57 +1,55 @@
 package PRAKTIKA6.praktika6zadanie1;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Problem {
-    static int[][] field;
 
-    public static int solve(int i, int j)
+    static int[][] m1, m2;
+    static int size, max;
+
+    public static int resultFunc()
     {
-        if(i!=0 && j!=0)
+        for (int i = size - 1; i >= 0; i--)
         {
-            if(field[i-1][j] > field[i][j-1])
-                return field[i][j] + solve(i-1, j);
-            else
-                return field[i][j] + solve(i, j-1);
+            for (int j = size - 1; j >= 0; j--) {
+                if (i == size - 1 && j == size - 1)
+                    m2[i][j] = m1[i][j];
+                else if (i == size - 1)
+                    m2[i][j] = m1[i][j] + m2[i][j+1];
+                else if (j == size - 1) {
+                    m2[i][j] = m1[i][j] + m2[i + 1][j];
+                }
+                else{
+                    max = m1[i][j] + m2[i+1][j];
+                    if(max<m1[i][j] + m2[i][j+1])
+                        max = m1[i][j] + m2[i][j+1];
+                    m2[i][j] = max;
+                }
+            }
         }
-        else if(i == 0 && j != 0)
-        {
-            return field[i][j] + solve(i, j-1);
-        }
-        else if (j == 0 && i != 0)
-        {
-            return field[i][j] + solve(i-1, j);
-        }
-        else if (i == 0 && j == 0)
-        {
-            return field[i][j];
-        }
-        return 0;
+
+        return m2[0][0];
     }
-
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int max = 0;
-        field = new int[n][n];
+        Scanner n = new Scanner(System.in);
+        Random r = new Random();
 
-        for(int i = 0; i < n; i++)
+        size = n.nextInt();
+        m1 = new int[size][size];
+        m2 = new int[size][size];
+
+        for (int i = 0; i < size; i++)
         {
-            for(int j = 0; j < n; j++)
+            for (int j = 0; j < size; j++)
             {
-                field[i][j] = (int)(Math.random() * 100 - 50);
+                m1[i][j] = r.nextInt(500)-100;
+                System.out.print(m1[i][j] + " ");
             }
+            System.out.println();
         }
 
-        for(int i = 0; i < n; i++)
-        {
-            for(int j = 0; j < n; j++)
-            {
-                    System.out.print(field[i][j]+" ");
-            }
-            System.out.println("");
-        }
-
-        System.out.println("Maximum is " + solve(n-1, n-1));
+        System.out.println(resultFunc());
     }
 }
+

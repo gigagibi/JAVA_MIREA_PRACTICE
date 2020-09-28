@@ -2,20 +2,20 @@ package PRAKTIKA7;
 
 public class Employee {
     private String name;
-    private double salary;
+    private double baseSalary;
     private EmployeePosition position;
     private Company company;
 
     public Employee(String name, double salary, EmployeePosition position, Company company) {
         this.name = name;
-        this.salary = salary;
+        this.baseSalary = salary;
         this.position = position;
         this.company = company;
     }
 
     public Employee(String name, double salary, EmployeePosition position) {
         this.name = name;
-        this.salary = salary;
+        this.baseSalary = salary;
         this.position = position;
     }
 
@@ -25,16 +25,16 @@ public class Employee {
 
     public Employee(String name, double salary) {
         this.name = name;
-        this.salary = salary;
+        this.baseSalary = salary;
     }
 
     public Employee(double salary, EmployeePosition position) {
-        this.salary = salary;
+        this.baseSalary = salary;
         this.position = position;
     }
 
     public Employee(double salary) {
-        this.salary = salary;
+        this.baseSalary = salary;
     }
 
     public String getName() {
@@ -46,11 +46,11 @@ public class Employee {
     }
 
     public double getSalary() {
-        return salary;
+        return baseSalary;
     }
 
     public void setSalary(double salary) {
-        this.salary = salary;
+        this.baseSalary = salary;
     }
 
     public EmployeePosition getPosition() {
