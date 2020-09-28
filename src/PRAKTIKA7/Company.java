@@ -111,9 +111,8 @@ public class Company {
                     if(employeers.get(j).getSalary() < employeers.get(j+1).getSalary())
                     {
                         Employee tmpEmpl = new Employee(employeers.get(j).getName(), employeers.get(j).getSalary(), employeers.get(j).getPosition(), employeers.get(j).getCompany());
-                        Employee nextEmpl = new Employee(employeers.get(j+1).getName(), employeers.get(j+1).getSalary(), employeers.get(j+1).getPosition(), employeers.get(j+1).getCompany());
-                        nextEmpl = employeers.get(j);
-                        tmpEmpl = employeers.get(j+1);
+                        employeers.set(j, employeers.get(j+1));
+                        employeers.set(j+1, tmpEmpl);
                     }
                 }
             }
@@ -134,6 +133,7 @@ public class Company {
         if(count <= employeers.size() && count >= 0)
         {
             ArrayList<Employee> returnedEmpls= new ArrayList<Employee>();
+            ArrayList<String> names = new ArrayList<String>();
             for(int i = this.employeers.size() - 1; i >= 0; i--)
             {
                 for(int j = 0; j < i; j++)
@@ -141,9 +141,8 @@ public class Company {
                     if(employeers.get(j).getSalary() > employeers.get(j+1).getSalary())
                     {
                         Employee tmpEmpl = new Employee(employeers.get(j).getName(), employeers.get(j).getSalary(), employeers.get(j).getPosition(), employeers.get(j).getCompany());
-                        Employee nextEmpl = new Employee(employeers.get(j+1).getName(), employeers.get(j+1).getSalary(), employeers.get(j+1).getPosition(), employeers.get(j+1).getCompany());
-                        nextEmpl = employeers.get(j);
-                        tmpEmpl = employeers.get(j+1);
+                        employeers.set(j, employeers.get(j+1));
+                        employeers.set(j+1, tmpEmpl);
                     }
                 }
             }
@@ -151,9 +150,11 @@ public class Company {
             for(int i = 0; i < count; i++)
             {
                 returnedEmpls.add(employeers.get(i));
+                names.add(employeers.get(i).getName());
             }
 
             return returnedEmpls;
+            //return names;
         }
         else
             return null;

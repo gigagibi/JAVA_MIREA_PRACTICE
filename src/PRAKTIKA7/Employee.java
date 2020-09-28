@@ -28,6 +28,10 @@ public class Employee {
         this.salary = salary;
     }
 
+    public Employee(double salary, EmployeePosition position) {
+        this.salary = salary;
+        this.position = position;
+    }
 
     public Employee(double salary) {
         this.salary = salary;
