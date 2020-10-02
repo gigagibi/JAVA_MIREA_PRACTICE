@@ -2,6 +2,7 @@ package PRAKTIKA78;
 
 public class Employee {
     private String name;
+    private String surname;
     private double baseSalary;
     private EmployeePosition position;
     private Company company;
@@ -41,6 +42,13 @@ public class Employee {
         return name;
     }
 
+    public String getSurname() {
+        return surname;
+    }
+    
+    public void setSurname() {
+        this.surname = surname;
+    }
     public void setName(String name) {
         this.name = name;
     }
