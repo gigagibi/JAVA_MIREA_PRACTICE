@@ -59,6 +59,10 @@ public class Employee {
 
     public void setPosition(EmployeePosition position) {
         this.position = position;
+        if(company != null)
+        {
+            company.removeCompanyPosition(position);
+        }
     }
 
     public Company getCompany() {

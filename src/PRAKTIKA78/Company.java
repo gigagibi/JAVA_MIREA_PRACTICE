@@ -88,6 +88,7 @@ public class Company {
         }
     }
 
+
     public double getIncome()
     {
         double income = 0;
@@ -153,10 +154,23 @@ public class Company {
             }
 
             return returnedEmpls;
-            //return names;
         }
         else
             return null;
     }
 
+    public void removeCompanyPosition(EmployeePosition position) {
+        if(position.getJobTitle() == "Manager")
+        {
+            managers.remove(position);
+        }
+        else if(position.getJobTitle() == "TopManager")
+        {
+            topManagers.remove(position);
+        }
+        else if(position.getJobTitle() == "Operator")
+        {
+            operators.remove(position);
+        }
+    }
 }
