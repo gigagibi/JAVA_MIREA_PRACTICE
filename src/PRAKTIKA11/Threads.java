@@ -19,6 +19,8 @@ public class Threads {
             Thread thread = new Thread(() -> work(localI));
             thread.start();
             threads.add(thread);
+
+            //work(i);
         }
 
         for (Thread t : threads) {
@@ -43,6 +45,7 @@ public class Threads {
         lock.lock();
         for (int i = 0; i < count; i++) {
             a += (start + i) * (start + i) * Math.sqrt(start + i);
+            //totalSum++;
             incTotalSum();
             //totalSum.incrementAndGet();
         }
