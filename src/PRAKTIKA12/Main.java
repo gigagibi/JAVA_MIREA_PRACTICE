@@ -6,6 +6,6 @@ public class Main {
         System.out.println(fc.getColor() + str + FontColors.ANSI_RESET.getColor());
     }
     public static void main(String[] args) {
-        writeWithColor(FontColors.ANSI_BLUE, "ГОЛУБОЙ");
+        writeWithColor(FontColors.ANSI_RED, "КРАСНЫЙ");
     }
 }
