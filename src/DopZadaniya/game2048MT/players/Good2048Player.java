@@ -68,8 +68,21 @@ public class Good2048Player extends Game2048Player {
             gameFieldsT[index] = new GameField(gf.getSize());
             equate(gameFieldsT[index], gf);
             randomPlayersT[index] = new Random2048Player(gameFieldsT[index]);
-            gameFieldsT[index].moveRight();
-
+            switch(index)
+            {
+                case 0:
+                    gameFieldsT[index].moveRight();
+                    break;
+                case 1:
+                    gameFieldsT[index].moveLeft();
+                    break;
+                case 2:
+                    gameFieldsT[index].moveUp();
+                    break;
+                case 3:
+                    gameFieldsT[index].moveDown();
+                    break;
+            }
         }
     }
 
@@ -77,24 +90,28 @@ public class Good2048Player extends Game2048Player {
 
     @Override
     protected void step() throws InterruptedException, Exception {
-        ArrayList<Thread> threads = new ArrayList<Thread>();
+        Thread[] threads = new Thread[4];
 
+        for(int i = 0; i < 4; i++) //инициализация
+        {
+            MaxGenScoresT[i] = 0;
+            gameFieldsT[i] = new GameField(game2048Field.getSize());
+            equate(gameFieldsT[i], (GameField)game2048Field);
+            randomPlayersT[i] = new Random2048Player(gameFieldsT[i]);
+
+        }
 
         for(int i = 0; i < 4; i++)
         {
             int localI = i;
-            gameFieldsT[i] = new GameField(game2048Field.getSize());
-            equate(gameFieldsT[i], (GameField)game2048Field);
-            randomPlayersT[i] = new Random2048Player(gameFieldsT[0]);
-            Thread thread = new Thread(() -> {
+            threads[i] = new Thread(() -> {
                 try {
                     playRandPlayerOnDir((GameField)game2048Field, localI);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             });
-            thread.start();
-            threads.add(thread);
+            threads[i].start();
         }
 
         for (Thread t : threads) {
