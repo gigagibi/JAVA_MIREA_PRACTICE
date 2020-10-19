@@ -12,23 +12,16 @@ public class Main {
             item.setCost(cost);
             System.out.println("Cost is: " + cost);
         }
-        catch (NegativeCostException nce)
-        {
+        catch (NegativeCostException nce) {
             System.out.println("Cost is negative!");
         }
-
-        catch(NumberFormatException nfe)
-        {
+        catch(NumberFormatException nfe) {
             System.out.println("Incorrect input");
         }
-
-        catch(Exception ex)
-        {
+        catch(Exception ex) {
             System.out.println("Error occured");
         }
-
-        finally
-        {
+        finally {
             System.out.println(item);
         }
     }
