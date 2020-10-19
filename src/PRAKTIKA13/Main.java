@@ -18,11 +18,19 @@ public class Main {
         catch(NumberFormatException nfe) {
             System.out.println("Incorrect input");
         }
-        catch(Exception ex) {
+        catch(BigCostException bce)
+        {
+            System.out.println("Cost is too big!");
+        }
+        catch(Exception ex)
+        {
             System.out.println("Error occured");
         }
         finally {
             System.out.println(item);
         }
+
+        throw new BigCostException(); //от RuntimeException
+        //ну или
     }
 }
