@@ -31,6 +31,5 @@ public class Main {
         }
 
         throw new BigCostException(); //от RuntimeException
-        //ну или
     }
 }
