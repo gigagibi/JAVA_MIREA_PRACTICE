@@ -8,57 +8,29 @@ import java.util.regex.Pattern;
 
 public class Main {
 
-    public static String replaceByRulesREGEX(ArrayList<String> rules, String str) //почему то m.group() возвращает только одно совпадение (не AA и 111, а только AA) хотя groupCount() = 2
+    public static String replaceByRulesREGEX(ArrayList<String> rules, String str)
     {
-        /*String regex = new String();
+        String regex = new String();
         StringBuilder sb = new StringBuilder();
         for(int i = 0; i < rules.size(); i++)
         {
             sb.append(rules.get(i).split(" ")[0]);
-        }*/
-        Pattern p = Pattern.compile("AA|11");//sb.toString());
-        Matcher m = p.matcher("AA11AA1");
-        //return m.replaceAll("1");
-        //m.matches();
-        //return m.group(0).replaceAll("\\w+", "1");
-        StringBuilder bbb = new StringBuilder();
-
-        String b1 = new String();
-
-        int sc = 0;
-        while (m.find())
-        {
-            sc++;
-            //m.matches();
-            System.out.println(m.group());
-            b1 = m.replaceFirst("3");
-            //m = p.matcher(b1);
-            m.find(sc);
+            if(i!= rules.size() -1)
+                sb.append("|");
         }
-       // b1 =
-        return b1;
+
+        HashMap<String, String> replaceMap = new HashMap<String, String>();
+        for(String t : rules)
+        {
+            replaceMap.put(t.split(" ")[0], t.split(" ")[1]);
+        }
+
+        Pattern pattern = Pattern.compile(sb.toString());
+        Matcher matcher = pattern.matcher(str);
+
+        return matcher.replaceAll(x -> replaceMap.get(x.group()));
     }
 
-    /*public static String replaceByRulesREGEX(ArrayList<String> rules, String str)
-    {
-
-        ArrayList<Pattern> patterns = new ArrayList<Pattern>();
-        ArrayList<Matcher> matchers = new ArrayList<Matcher>();
-        for(int i = 0; i < rules.size(); i++)
-        {
-            patterns.add(Pattern.compile(rules.get(i).split(" ")[i]));
-            matchers.add(patterns.get(i).matcher());
-        }
-        Pattern pattern = Pattern.compile("af");
-        Matcher matcher = pattern.matcher("afwdv3r thyth");
-        if(matcher.find())
-        {
-            return matcher.replaceAll("");
-        }
-        //matchers.get(i).
-        else
-            return "Error";
-    }*/
 
     public static String replaceByRules(ArrayList<String> rules, String str)
     {
@@ -121,7 +93,7 @@ public class Main {
         }
 
         str = sc.nextLine();
-        System.out.println(replaceByRules(rules, str));
-        //System.out.println(replaceByRulesREGEX(null, null));
+        System.out.println("Without regex: " + replaceByRules(rules, str));
+        System.out.println("With regex: " + replaceByRulesREGEX(rules, str));
     }
 }
