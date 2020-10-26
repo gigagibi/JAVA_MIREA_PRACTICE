@@ -12,6 +12,9 @@ public class State {
         this.transitions = transitions;
     }
 
+    public State() {
+    }
+
     public HashMap<Integer, String> getCommands() {
         return commands;
     }
