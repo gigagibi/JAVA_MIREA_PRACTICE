@@ -23,11 +23,13 @@ public class Main {
         {
             try(BufferedReader reader = new BufferedReader(new FileReader(file.getPath())))
             {
-                result.append("### " + file.getPath() + "\n");
+                result.append("### " + file.getPath() + "\n" + "```java" + "\n");
+                //result.append("### " + file.getPath() + "\n");
                 while(reader.readLine()!= null)
                 {
                     result.append(reader.readLine() + "\n");
                 }
+               result.append("```" + "\n");
             } catch (FileNotFoundException e) {
                 System.out.println("file not found");
                 e.printStackTrace();

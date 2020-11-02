@@ -1,4 +1,5 @@
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\DopZadaniya\Change.java
+```java
 
 
 
@@ -8,7 +9,9 @@
             change -= 5;
         System.out.println("Всего " + howManyWays + " способов");
 }
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\DopZadaniya\game2048\Cell.java
+```java
 
     private int value;
         this.value = value;
@@ -21,7 +24,9 @@
     public Cell clone() throws CloneNotSupportedException {
     }
 null
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\DopZadaniya\game2048\CellHolder.java
+```java
 public class CellHolder  implements Cloneable{
 
         return cell == null;
@@ -43,7 +48,9 @@ public class CellHolder  implements Cloneable{
         CellHolder newCellHolder = (CellHolder) super.clone();
         return (CellHolder) newCellHolder;
 }
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\DopZadaniya\game2048\Game2048Field.java
+```java
 public interface Game2048Field {
 
 
@@ -54,7 +61,9 @@ public interface Game2048Field {
 
 
 }
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\DopZadaniya\game2048\Game2048Player.java
+```java
 
     protected Game2048Field game2048Field;
     public Game2048Player(Game2048Field game2048Field){
@@ -70,7 +79,9 @@ public interface Game2048Field {
     }
     protected abstract void step() throws InterruptedException, Exception;
 null
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\DopZadaniya\game2048\GameField.java
+```java
 
 import java.util.Random;
 public class GameField implements Game2048Field, Cloneable{
@@ -177,7 +188,9 @@ public class GameField implements Game2048Field, Cloneable{
     public void setSize(int size) {
     }
 null
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\DopZadaniya\game2048\LineHolder.java
+```java
 
 
     private CellHolder[] cellsLine;
@@ -223,7 +236,9 @@ null
         LineHolder newLineHolder = (LineHolder) super.clone();
         return newLineHolder;
 }
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\DopZadaniya\game2048\Main.java
+```java
 import DopZadaniya.game2048.players.*;
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -231,7 +246,9 @@ public class Main {
         Good2048Player player = new Good2048Player(gameField);
 
 }
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\DopZadaniya\game2048\players\Console2048Player.java
+```java
 
 import DopZadaniya.game2048.Game2048Player;
 import java.util.Scanner;
@@ -249,7 +266,9 @@ public class Console2048Player extends Game2048Player implements Cloneable{
                 game2048Field.moveLeft();
         }
 }
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\DopZadaniya\game2048\players\Good2048Player.java
+```java
 
 
 
@@ -357,7 +376,9 @@ public class Console2048Player extends Game2048Player implements Cloneable{
             game2048Field.moveDown();
         }
 }
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\DopZadaniya\game2048\players\Random2048Player.java
+```java
 
 import DopZadaniya.game2048.Game2048Player;
 import java.util.Random;
@@ -374,7 +395,9 @@ public class Random2048Player extends Game2048Player implements Cloneable {
                 break;
     }
 null
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\DopZadaniya\game2048MT\Cell.java
+```java
 
     private int value;
         this.value = value;
@@ -387,7 +410,9 @@ null
     public Cell clone() throws CloneNotSupportedException {
     }
 null
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\DopZadaniya\game2048MT\CellHolder.java
+```java
 public class CellHolder  implements Cloneable{
 
         return cell == null;
@@ -409,7 +434,9 @@ public class CellHolder  implements Cloneable{
         CellHolder newCellHolder = (CellHolder) super.clone();
         return (CellHolder) newCellHolder;
 }
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\DopZadaniya\game2048MT\Game2048Field.java
+```java
 public interface Game2048Field {
 
 
@@ -420,7 +447,9 @@ public interface Game2048Field {
 
 
 }
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\DopZadaniya\game2048MT\Game2048Player.java
+```java
 
     protected Game2048Field game2048Field;
     public Game2048Player(Game2048Field game2048Field){
@@ -436,7 +465,9 @@ public interface Game2048Field {
     }
     protected abstract void step() throws InterruptedException, Exception;
 null
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\DopZadaniya\game2048MT\GameField.java
+```java
 
 import java.util.Random;
 public class GameField implements Game2048Field, Cloneable{
@@ -543,7 +574,9 @@ public class GameField implements Game2048Field, Cloneable{
     public void setSize(int size) {
     }
 null
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\DopZadaniya\game2048MT\LineHolder.java
+```java
 
 
     private CellHolder[] cellsLine;
@@ -589,7 +622,9 @@ null
         LineHolder newLineHolder = (LineHolder) super.clone();
         return newLineHolder;
 }
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\DopZadaniya\game2048MT\Main.java
+```java
 import DopZadaniya.game2048MT.players.*;
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -597,7 +632,9 @@ public class Main {
         Good2048Player player = new Good2048Player(gameField);
 
 }
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\DopZadaniya\game2048MT\players\Console2048Player.java
+```java
 
 import DopZadaniya.game2048MT.Game2048Player;
 import java.util.Scanner;
@@ -615,7 +652,9 @@ public class Console2048Player extends Game2048Player implements Cloneable{
                 game2048Field.moveLeft();
         }
 }
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\DopZadaniya\game2048MT\players\Good2048Player.java
+```java
 
 import DopZadaniya.game2048MT.*;
 import java.util.ArrayList;
@@ -682,7 +721,9 @@ import java.util.ArrayList;
             game2048Field.moveDown();
     }
 null
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\DopZadaniya\game2048MT\players\Random2048Player.java
+```java
 
 import DopZadaniya.game2048MT.Game2048Player;
 import java.util.Random;
@@ -699,7 +740,9 @@ public class Random2048Player extends Game2048Player implements Cloneable {
                 break;
     }
 null
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\DopZadaniya\Threads.java
+```java
 
 import java.util.concurrent.locks.ReentrantLock;
 public class Threads {
@@ -727,7 +770,9 @@ public class Threads {
             e.printStackTrace();
         return a;
 }
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA1\praktika1zadanie3\src\com\company\Main.java
+```java
 
 
 	// write your code here
@@ -744,14 +789,18 @@ public class Threads {
         System.out.println(sum2);
     }
 null
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA1\praktika1zadanie4\src\com\company\Main.java
+```java
 
 
 	for(String str : args)
         System.out.println(str);
     }
 null
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA1\praktika1zadanie5\src\com\company\Main.java
+```java
 
 
 	// write your code here\
@@ -759,7 +808,9 @@ null
             System.out.format("1 / %d%n", i);
     }
 null
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA1\praktika1zadanie6\src\com\company\Main.java
+```java
 import java.lang.Math;
 
 
@@ -773,7 +824,9 @@ import java.lang.Math;
         }
     }
 null
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA1\praktika1zadanie7\src\com\company\Main.java
+```java
 
 
     {
@@ -782,7 +835,9 @@ null
     public static void main(String[] args) {
         System.out.println(fac(5));
 }
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA10\MainWindow.java
+```java
 
 
 import java.awt.*;
@@ -829,7 +884,9 @@ public class MainWindow extends JFrame {
 
         MainWindow window = new MainWindow();
 }
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA11\Threads.java
+```java
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -860,7 +917,9 @@ public class Threads {
     private synchronized static void incTotalSum()
         totalSum++;
 }
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA12\FontColors.java
+```java
 
     ANSI_RESET("\u001B[0m"),
     ANSI_RED("\u001B[31m"),
@@ -873,17 +932,23 @@ public class Threads {
 
         this.color = color;
 }
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA12\Main.java
+```java
 
     public static void writeWithColor(FontColors fc, String str)
         System.out.println(fc.getColor() + str + FontColors.ANSI_RESET.getColor());
     public static void main(String[] args) {
     }
 null
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA13\BigCostException.java
+```java
 
 }
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA13\Item.java
+```java
 
     private int cost;
     public int getCost() {
@@ -895,7 +960,9 @@ null
         }
 
 }
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA13\Main.java
+```java
 
 
 
@@ -914,10 +981,14 @@ null
 
     }
 null
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA13\NegativeCostException.java
+```java
 
 }
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA14\Main.java
+```java
 
 import java.util.HashMap;
 import java.util.regex.Matcher;
@@ -968,7 +1039,9 @@ import java.util.regex.Matcher;
         System.out.println("Without regex: " + replaceByRules(rules, str));
     }
 null
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA15\Main.java
+```java
 
 import java.util.HashMap;
 import java.util.Scanner;
@@ -1016,7 +1089,9 @@ public class Main {
         {
         }
 }
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA15\State.java
+```java
 
 
 
@@ -1034,7 +1109,9 @@ public class Main {
     public void setTransitions(HashMap<Integer, State> transitions) {
     }
 null
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA17\Main.java
+```java
 
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Paths;
@@ -1047,9 +1124,10 @@ import java.nio.file.Paths;
             }
         else if(file.isFile() && file.getPath().endsWith(".java"))
             try(BufferedReader reader = new BufferedReader(new FileReader(file.getPath())))
-                result.append("### " + file.getPath() + "\n");
-                {
-                }
+                result.append("### " + file.getPath() + "\n" + "```java" + "\n");
+                while(reader.readLine()!= null)
+                    result.append(reader.readLine() + "\n");
+               result.append("```" + "\n");
                 System.out.println("file not found");
             } catch (IOException e) {
             }
@@ -1063,7 +1141,9 @@ import java.nio.file.Paths;
         } catch (IOException e) {
         }
 }
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA2\praktika2zadanie1\src\com\company\Main.java
+```java
 class Shape
     int h = 20;
     int l = 90;
@@ -1077,7 +1157,9 @@ class Shape
 	// write your code here
         classter.toString();
 }
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA2\praktika2zadanie2\src\com\company\Main.java
+```java
 
 {
     int v = 2;
@@ -1089,7 +1171,9 @@ public class Main {
         Ball abibas = new Ball();
     }
 null
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA2\praktika2zadanie3\src\com\company\Main.java
+```java
 
 {
     int series = 2;
@@ -1101,7 +1185,9 @@ public class Main {
         Book kniga = new Book();
     }
 null
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA2\praktika2zadanie4\src\com\company\Main.java
+```java
 import java.util.ArrayList;
 
 {
@@ -1134,7 +1220,9 @@ class PitomnikSobak
         System.out.println(bobik.toString());
         pitomnik.addDog(3, "Sharik");
 }
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA3\praktika3zadanie1\src\com\company\Circle.java
+```java
 
     double x0, y0, R;
     public double getX0() {
@@ -1150,7 +1238,9 @@ class PitomnikSobak
     public void setX0(double x0) {
     }
 null
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA3\praktika3zadanie1\src\com\company\CircleTest.java
+```java
 
 
         Circle c1 = new Circle();
@@ -1158,7 +1248,9 @@ null
 
     }
 null
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA3\praktika3zadanie2\src\com\company\Hand.java
+```java
 
     private int l, s;
     public int getL() {
@@ -1174,7 +1266,9 @@ null
                 ", s=" + s +
     }
 null
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA3\praktika3zadanie2\src\com\company\Head.java
+```java
 public class Head {
 
         return h;
@@ -1194,7 +1288,9 @@ public class Head {
                 ", v=" + v +
     }
 null
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA3\praktika3zadanie2\src\com\company\Human.java
+```java
 
     private Hand hand1 = new Hand();
     private Head head = new Head();
@@ -1232,7 +1328,9 @@ null
                 ", tall=" + tall +
     }
 null
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA3\praktika3zadanie2\src\com\company\Leg.java
+```java
 public class Leg {
 
         return h;
@@ -1252,13 +1350,17 @@ public class Leg {
                 ", s_f=" + s_f +
     }
 null
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA3\praktika3zadanie2\src\com\company\Main.java
+```java
 public class Main {
     public static void main(String[] args) {
         human.setTall(2); // задается рост человека
         System.out.println(human.toString());
 }
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA3\praktika3zadanie3\src\com\company\Book.java
+```java
 
     private String author, name;
 
@@ -1283,7 +1385,9 @@ public class Main {
                 ", year=" + year +
                 '}';
 }
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA3\praktika3zadanie3\src\com\company\BookTest.java
+```java
 
 
 	Book book = new Book();
@@ -1291,7 +1395,9 @@ public class Main {
 	book.setYear(2010);
     }
 null
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA4\praktika4zadanie1\src\com\company\Circle.java
+```java
 
     protected double radius;
     {
@@ -1313,7 +1419,9 @@ null
                 ", color='" + color + '\'' +
                 '}';
 }
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA4\praktika4zadanie1\src\com\company\Main.java
+```java
 
 
 	// write your code here
@@ -1322,7 +1430,9 @@ null
         System.out.println(rc.toString());
     }
 null
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA4\praktika4zadanie1\src\com\company\Rectangle.java
+```java
 public class Rectangle extends Shape{
 
     {
@@ -1351,7 +1461,9 @@ public class Rectangle extends Shape{
                 ", filled=" + filled +
     }
 null
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA4\praktika4zadanie1\src\com\company\Shape.java
+```java
 public abstract class Shape {
     protected boolean filled;
     Shape(String color, boolean filled)
@@ -1371,7 +1483,9 @@ public abstract class Shape {
                 "color='" + color + '\'' +
                 '}';
 }
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA4\praktika4zadanie1\src\com\company\Square.java
+```java
 
     private double side;
     {
@@ -1390,7 +1504,9 @@ public abstract class Shape {
     public String toString() {
     }
 null
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA5\praktika5zadanie1\src\com\company\Main.java
+```java
 
 
         MovableCircle movcr = new MovableCircle(1, 0, 0);
@@ -1398,10 +1514,14 @@ null
         movRec.move(1, 0);
     }
 null
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA5\praktika5zadanie1\src\com\company\Movable.java
+```java
 public interface Movable {
 }
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA5\praktika5zadanie1\src\com\company\MovableCircle.java
+```java
 
     private int radius;
 
@@ -1421,7 +1541,9 @@ public interface Movable {
                 "radius=" + radius +
                 '}';
 }
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA5\praktika5zadanie1\src\com\company\MovablePoint.java
+```java
 
     private int x, y;
     public MovablePoint(int x, int y) {
@@ -1442,7 +1564,9 @@ public interface Movable {
                 "x=" + x +
                 '}';
 }
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA5\praktika5zadanie1\src\com\company\MovableRectangle.java
+```java
 
 
     private MovablePoint topLeft = new MovablePoint(0, 0);
@@ -1469,7 +1593,9 @@ public interface Movable {
                 "topLeft=" + topLeft +
                 '}';
 }
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA6\praktika6zadanie1\Problem.java
+```java
 
 import java.util.Scanner;
 public class Problem {
@@ -1498,7 +1624,9 @@ public class Problem {
         System.out.println(resultFunc());
 }
 null
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA78\Company.java
+```java
 
 import java.util.EnumMap;
 import java.util.Random;
@@ -1587,7 +1715,9 @@ public class Company {
         {
         }
 }
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA78\Employee.java
+```java
 
     private String name;
     private double baseSalary;
@@ -1630,11 +1760,15 @@ public class Company {
     public void setCompany(Company company) {
     }
 null
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA78\EmployeePosition.java
+```java
 
     String getJobTitle();
 }
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA78\Main.java
+```java
 
 import java.util.Random;
 public class Main {
@@ -1661,7 +1795,9 @@ public class Main {
         {
         }
 }
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA78\Manager.java
+```java
 
     private Company company;
 
@@ -1674,7 +1810,9 @@ public class Main {
     }
 
 null
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA78\Operator.java
+```java
 
 
     public double calcSalary(double baseSalary) {
@@ -1682,7 +1820,9 @@ null
     @Override
         return "Operator";
 }
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA78\TopManager.java
+```java
 
     private Company company;
     public TopManager(Company company)
@@ -1694,7 +1834,9 @@ null
     @Override
         return "TopManager";
 }
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA9\Company.java
+```java
 
 
     private ArrayList<Employee> employeers = new ArrayList<Employee>();
@@ -1722,7 +1864,9 @@ null
         }
     }
 null
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA9\Employee.java
+```java
 
 
     private String name, surname;
@@ -1762,16 +1906,22 @@ null
     public void setSalary(int salary) {
     }
 null
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA9\EmployeerHandler.java
+```java
 
 
     void doSome(Employee empl);
 null
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA9\EmployeeSelector.java
+```java
 
     boolean isNeed(Employee empl);
 null
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA9\Main.java
+```java
 
 
     public static void main(String[] args) {
@@ -1788,13 +1938,18 @@ null
         System.out.println("----------------------");
     }
 null
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA9\SalaryHandler.java
+```java
 
     @Override
         System.out.println(empl.getSalary());
 }
+```
 ### D:\Projectss\Java\JAVA_MIREA_PRACTICE\src\PRAKTIKA9\SalarySelector.java
+```java
 
     @Override
         return empl.getSalary() > 10000;
 }
+```
