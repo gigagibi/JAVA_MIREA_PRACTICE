@@ -1,6 +1,6 @@
 package PRAKTIKA19;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
@@ -18,6 +18,9 @@ public class Chat {
         System.out.println("listening on 9087");
         while (true) {
             socket.receive(packet);
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File("history.txt"), true)));
+            writer.write(new String(packet.getData()));
+            writer.close();
             System.out.println(packet.getAddress());
             System.out.println(packet.getPort());
             if(!ports.contains(packet.getPort()))
