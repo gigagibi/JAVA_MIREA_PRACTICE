@@ -7,7 +7,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="JAVA_MIREA_PRACTICE" />
-        <module name="PRAKTIKA Gudaev.I.I IVBO-07-19" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
