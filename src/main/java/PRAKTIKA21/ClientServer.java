@@ -142,7 +142,7 @@ public class ClientServer implements ItemsStore{
     public String deleteItem(int id) {
         try {
             String body = get(id);
-            HttpRequest request = HttpRequest.newBuilder().DELETE().uri(URI.create("http://80.87.199.76:3000/objects" + id)).build();
+            HttpRequest request = HttpRequest.newBuilder().DELETE().uri(URI.create("http://80.87.199.76:3000/objects/" + id)).build();
             HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
             System.out.println(response.body());
         }
