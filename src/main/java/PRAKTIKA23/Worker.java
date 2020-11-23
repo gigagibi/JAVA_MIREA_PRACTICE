@@ -1,8 +1,11 @@
 package PRAKTIKA23;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.*;
+import java.lang.reflect.Type;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.http.HttpClient;
@@ -15,88 +18,71 @@ import java.util.regex.Pattern;
 
 public class Worker {
 
+    static Gson gson = new GsonBuilder().setPrettyPrinting().create();
     URI tasksURL = new URI("http://gitlessons2020.rtuitlab.ru:3000/tasks");
     URI reportsURL = new URI("http://gitlessons2020.rtuitlab.ru:3000/reports");
     HttpClient httpClient = HttpClient.newBuilder().build();
-    String workerName = "Gudaev";
+    static Pattern solvedTaskPattern = Pattern.compile("\\{\\n.+(\\d+),\\n.+\\n\\D+[^-\\d](-*\\d+\\.?\\d*)\"\\n.+"); //для выделения конкретного задания c одним числовым результатом
+    //Pattern taskPattern = Pattern.compile("\\{\\n.+(\\d+),\\n.+\\n\\D+[^-\\d](-?\\d+\\.?\\d*)(\\D+[^-\\d])(-*\\d+\\.?\\d*)\"\\n.+"); //для выделения конкретного задания с выражением
+    static Pattern mathPattern = Pattern.compile("([\\+\\-\\*\\/]?\\d+\\.?\\d*)\\s*([\\+\\-\\*\\/])\\s*([\\+\\-\\*\\/]?\\s*\\d+\\.?\\d*)"); //для математических выражений
 
-    public static void main(String[] args) throws URISyntaxException, InterruptedException, IOException {
-        Gson gson = new Gson();
-
-        BufferedReader reader;
+    public static void main(String[] args) throws URISyntaxException, IOException, InterruptedException {
         Worker worker = new Worker();
-        String taskList = worker.getTask();
-        StringBuilder db = new StringBuilder();
-        Pattern solvedTaskPattern = Pattern.compile("\\{\\n.+(\\d+),\\n.+\\n\\D+[^-\\d](-*\\d+\\.?\\d*)\"\\n.+"); //для выделения конкретного задания c одним числовым результатом
-        Pattern taskPattern = Pattern.compile("\\{\\n.+(\\d+),\\n.+\\n\\D+[^-\\d](-?\\d+\\.?\\d*)(\\D+[^-\\d])(-*\\d+\\.?\\d*)\"\\n.+"); //для выделения конкретного задания с выражением
-        Pattern mathPattern = Pattern.compile("\"(-?\\d+\\.?\\d*)(\\D+[^-\\d])(-*\\d+\\.?\\d*)\""); //для математических выражений
+
+
+        ArrayList<Task> tasks = new ArrayList<>();
+        ArrayList<Report> reports = new ArrayList<>();
+
         while(true)
         {
-            String id, taskId, result;
-            reader = new BufferedReader(new FileReader("src\\main\\java\\PRAKTIKA23\\db.json"));
-            String line;
+            StringBuilder dbSB = new StringBuilder();
+            String line = null;
+            BufferedReader reader = new BufferedReader(new FileReader("src\\main\\java\\PRAKTIKA23\\db.json"));
             while((line = reader.readLine()) != null)
             {
-                db.append(line);
-                db.append("\n");
+                dbSB.append(line).append("\n");
             }
             reader.close();
-            Random r = new Random();
-            long sleepTime = (long) (r.nextFloat()*2000 + 1);
-            Thread.sleep(sleepTime);
-            taskList = worker.getTask();
-
-            ArrayList<String> tasks = new ArrayList<>();
-
-            Matcher taskPatternMatcher = taskPattern.matcher(taskList);
-            if(taskPatternMatcher.find())
-            {
-                for(int i = 1; i <= taskPatternMatcher.groupCount(); i++)
-                {
-                    tasks.add(taskPatternMatcher.group(i));
-                }
-            }
-
+            Thread.sleep((long) new Random().nextFloat()*2000+1);
+            Type taskType = new TypeToken<ArrayList<Task>>(){}.getType();
+            Type reportType = new TypeToken<ArrayList<Report>>(){}.getType();
+            tasks = gson.fromJson(worker.getTasks(), taskType);
             for(int i = 0; i < tasks.size(); i++)
             {
-
-                Matcher mathMatcher = mathPattern.matcher(tasks.get(i));
-                double answer = -1;
-                if (mathMatcher.find()) {
-                    answer = worker.solveMath(mathMatcher.group());
-                }
-                String solvedTask = mathMatcher.replaceAll("\"" + answer + "\"");
-                tasks.set(i, solvedTask);
+               String expression = tasks.get(i).getExpression();
+               Matcher mathMatcher = mathPattern.matcher(expression);
+               //tasks.get(i).setExpression(tasks.get(i).getExpression().replace(expression, String.valueOf(worker.solveMath(expression))));
             }
 
-            StringBuilder taskSolved = new StringBuilder();
-            for(String task : tasks)
+            ArrayList<Task> solvedTasks = gson.fromJson(dbSB.toString(), taskType);
+
+            for(Task task : tasks)
             {
-                taskSolved.append(task);
-                taskSolved.append("\n");
-            }
-            if(!taskSolved.toString().equals(db.toString()))
-            {
-                FileWriter writer = new FileWriter("src\\main\\java\\PRAKTIKA23\\db.json");
-                writer.write(taskSolved.toString());
-                writer.close();
-                StringBuilder reportBuilder = new StringBuilder();
-                for(int i = 0; i < tasks.size(); i++)
+                if(!solvedTasks.contains(task) && solvedTasks != null)
                 {
-
+                    worker.sendReport(new Report(0, task.getId(), "Gudaev", worker.solveMath(task.getExpression())));
+                    solvedTasks.add(task);
+                }
+                else if(solvedTasks != null)
+                {
+                    solvedTasks = new ArrayList<>();
+                    worker.sendReport(new Report(0, task.getId(), "Gudaev", worker.solveMath(task.getExpression())));
+                    solvedTasks.add(task);
                 }
             }
+            FileWriter writer = new FileWriter("src\\main\\java\\PRAKTIKA23\\db.json");
+            writer.write(gson.toJson(solvedTasks));
         }
     }
 
-    public String getTask() throws IOException, InterruptedException {
+    public String getTasks() throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder().GET().uri(tasksURL).build();
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
         return response.body();
     }
 
-    public void sendReport(String report) throws IOException, InterruptedException {
-        HttpRequest request = HttpRequest.newBuilder().POST(HttpRequest.BodyPublishers.ofString(report)).uri(reportsURL).setHeader("Content-Type", "application/json").build();
+    public void sendReport(Report report) throws IOException, InterruptedException {
+        HttpRequest request = HttpRequest.newBuilder().POST(HttpRequest.BodyPublishers.ofString(gson.toJson(report))).uri(reportsURL).setHeader("Content-Type", "application/json").build();
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
         System.out.println("Отчет отправлен");
     }
@@ -106,13 +92,12 @@ public class Worker {
         double answer = 0;
         String symbol = null;
         double a = -1, b = -1;
-        Pattern pattern = Pattern.compile("(\"-*\\d+)(\\D+[^-\\d])(-*\\d+\")");
-        Matcher matcher = pattern.matcher(problem);
+        Matcher matcher = mathPattern.matcher(problem);
         if(matcher.find())
         {
-            a = Float.parseFloat(matcher.group(1).replace("\"", ""));
+            a = Float.parseFloat(matcher.group(1));
             symbol = matcher.group(2);
-            b = Float.parseFloat(matcher.group(3).replace("\"", ""));
+            b = Float.parseFloat(matcher.group(3));
         }
         if(symbol.contains("+"))
             answer = a+b;
