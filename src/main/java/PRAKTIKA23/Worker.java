@@ -22,8 +22,6 @@ public class Worker {
     URI tasksURL = new URI("http://gitlessons2020.rtuitlab.ru:3000/tasks");
     URI reportsURL = new URI("http://gitlessons2020.rtuitlab.ru:3000/reports");
     HttpClient httpClient = HttpClient.newBuilder().build();
-    static Pattern solvedTaskPattern = Pattern.compile("\\{\\n.+(\\d+),\\n.+\\n\\D+[^-\\d](-*\\d+\\.?\\d*)\"\\n.+"); //для выделения конкретного задания c одним числовым результатом
-    //Pattern taskPattern = Pattern.compile("\\{\\n.+(\\d+),\\n.+\\n\\D+[^-\\d](-?\\d+\\.?\\d*)(\\D+[^-\\d])(-*\\d+\\.?\\d*)\"\\n.+"); //для выделения конкретного задания с выражением
     static Pattern mathPattern = Pattern.compile("([\\+\\-\\*\\/]?\\d+\\.?\\d*)\\s*([\\+\\-\\*\\/])\\s*([\\+\\-\\*\\/]?\\s*\\d+\\.?\\d*)"); //для математических выражений
 
     public static void main(String[] args) throws URISyntaxException, IOException, InterruptedException {
@@ -63,7 +61,7 @@ public class Worker {
                     worker.sendReport(new Report(0, task.getId(), "Gudaev", worker.solveMath(task.getExpression())));
                     solvedTasks.add(task);
                 }
-                else if(solvedTasks != null)
+                else if(solvedTasks == null)
                 {
                     solvedTasks = new ArrayList<>();
                     worker.sendReport(new Report(0, task.getId(), "Gudaev", worker.solveMath(task.getExpression())));
