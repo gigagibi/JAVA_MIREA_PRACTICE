@@ -63,7 +63,7 @@ public class Worker {
                     worker.sendReport(new Report(0, task.getId(), "Gudaev", worker.solveMath(task.getExpression())));
                     solvedTasks.add(task);
                 }
-                else if(solvedTasks != null)
+                else if(solvedTasks == null)
                 {
                     solvedTasks = new ArrayList<>();
                     worker.sendReport(new Report(0, task.getId(), "Gudaev", worker.solveMath(task.getExpression())));
