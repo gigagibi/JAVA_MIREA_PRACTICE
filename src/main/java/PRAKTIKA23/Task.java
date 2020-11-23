@@ -1,5 +1,7 @@
 package PRAKTIKA23;
 
+import java.util.Objects;
+
 public class Task {
     private int id;
     private String taskDescription, expression;
@@ -32,5 +34,20 @@ public class Task {
 
     public void setExpression(String expression) {
         this.expression = expression;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Task)) return false;
+        Task task = (Task) o;
+        return getId() == task.getId() &&
+                Objects.equals(getTaskDescription(), task.getTaskDescription()) &&
+                Objects.equals(getExpression(), task.getExpression());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getTaskDescription(), getExpression());
     }
 }

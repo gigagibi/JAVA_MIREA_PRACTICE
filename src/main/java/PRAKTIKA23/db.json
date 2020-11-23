@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "taskDescription": "First Task",
+    "expression": "4 + 8"
+  },
+  {
+    "id": 2,
+    "taskDescription": "Second Task",
+    "expression": "34 / 4"
+  },
+  {
+    "id": 3,
+    "taskDescription": "Task 3",
+    "expression": "34 - -4"
+  },
+  {
+    "id": 4,
+    "taskDescription": "Task 4",
+    "expression": "-5*-4"
+  }
+]

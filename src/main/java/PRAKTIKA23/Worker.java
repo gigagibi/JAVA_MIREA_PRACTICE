@@ -26,8 +26,6 @@ public class Worker {
 
     public static void main(String[] args) throws URISyntaxException, IOException, InterruptedException {
         Worker worker = new Worker();
-
-
         ArrayList<Task> tasks = new ArrayList<>();
         ArrayList<Report> reports = new ArrayList<>();
 
@@ -45,32 +43,28 @@ public class Worker {
             Type taskType = new TypeToken<ArrayList<Task>>(){}.getType();
             Type reportType = new TypeToken<ArrayList<Report>>(){}.getType();
             tasks = gson.fromJson(worker.getTasks(), taskType);
-            for(int i = 0; i < tasks.size(); i++)
-            {
-               String expression = tasks.get(i).getExpression();
-               Matcher mathMatcher = mathPattern.matcher(expression);
-               //tasks.get(i).setExpression(tasks.get(i).getExpression().replace(expression, String.valueOf(worker.solveMath(expression))));
-            }
+
 
             ArrayList<Task> solvedTasks = gson.fromJson(dbSB.toString(), taskType);
 
             for(Task task : tasks)
             {
-                if(!solvedTasks.contains(task) && solvedTasks != null)
-                {
-                    worker.sendReport(new Report(0, task.getId(), "Gudaev", worker.solveMath(task.getExpression())));
-                    solvedTasks.add(task);
-                }
-                else if(solvedTasks == null)
-                {
-                    solvedTasks = new ArrayList<>();
-                    worker.sendReport(new Report(0, task.getId(), "Gudaev", worker.solveMath(task.getExpression())));
-                    solvedTasks.add(task);
+                if(solvedTasks != null) {
+                    if (!(solvedTasks.contains(task))) {
+                        worker.sendReport(new Report(0, task.getId(), "Gudaev", worker.solveMath(task.getExpression())));
+                        solvedTasks.add(task);
+                    }
                 }
             }
-            FileWriter writer = new FileWriter("src\\main\\java\\PRAKTIKA23\\db.json");
-            writer.write(gson.toJson(solvedTasks));
+            if(solvedTasks != null)
+            {
+                FileWriter writer = new FileWriter("src\\main\\java\\PRAKTIKA23\\db.json");
+                writer.write(gson.toJson(solvedTasks));
+                writer.close();
+            }
         }
+        //Worker worker = new Worker();
+        //worker.deletes(186, 223);
     }
 
     public String getTasks() throws IOException, InterruptedException {
@@ -109,5 +103,14 @@ public class Worker {
     }
 
     public Worker() throws URISyntaxException {
+    }
+
+    public void deletes(int start, int end) throws IOException, InterruptedException {
+        for(int id = start; id <= end; id++)
+        {
+            HttpRequest request = HttpRequest.newBuilder().DELETE().uri(URI.create("http://gitlessons2020.rtuitlab.ru:3000/reports/" + id)).build();
+            HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+        }
+
     }
 }
