@@ -25,14 +25,24 @@ public class Worker {
         Gson gson = new Gson();
         BufferedReader reader;
         Worker worker = new Worker();
+        String task = worker.getTask();
         while(true)
         {
-           // reader = new BufferedReader(new FileReader("src\\main\\java\\PRAKTIKA23\\db.json"));
+            //reader = new BufferedReader(new FileReader("src\\main\\java\\PRAKTIKA23\\db.json"));
             Random r = new Random();
-            long sleepTime = r.nextLong()*2000;
+            long sleepTime = (long) (r.nextFloat()*2000 + 1);
             Thread.sleep(sleepTime);
-            String task = worker.getTask();
-            taskJson = gson.fromJson(task);
+            Pattern taskExcept = Pattern.compile("\\{\n");
+
+            Pattern pattern = Pattern.compile("\"-*\\d+\\D+[^-\\d]-*\\d+\"");
+            Matcher matcher = pattern.matcher(task);
+            int answer = -1;
+            if(matcher.find())
+            {
+                answer = worker.solveMath(matcher.group(0));
+            }
+        System.out.println(task);
+            System.out.println(answer);
         }
     }
 
@@ -51,11 +61,16 @@ public class Worker {
     public int solveMath(String problem)
     {
         int answer = 0;
-        Pattern pattern = Pattern.compile("(\\d)(.)(\\d)");
+        String symbol = null;
+        int a = -1, b = -1;
+        Pattern pattern = Pattern.compile("(\"-*\\d+)(\\D+[^-\\d])(-*\\d+\")");
         Matcher matcher = pattern.matcher(problem);
-        int a = Integer.parseInt(matcher.group(1));
-        int b = Integer.parseInt(matcher.group(3));
-        String symbol = matcher.group(2);
+        if(matcher.find())
+        {
+            a = Integer.parseInt(matcher.group(1).replace("\"", ""));
+            symbol = matcher.group(2);
+            b = Integer.parseInt(matcher.group(3).replace("\"", ""));
+        }
         if(symbol.contains("+"))
             answer = a+b;
         else if(symbol.contains("-"))
