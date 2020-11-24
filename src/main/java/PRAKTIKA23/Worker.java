@@ -6,11 +6,13 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.*;
 import java.lang.reflect.Type;
+import java.math.MathContext;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.regex.Matcher;
@@ -63,7 +65,7 @@ public class Worker {
             }
         }
         //Worker worker = new Worker();
-        //worker.deletes(186, 223);
+        //worker.deletes(239, 442);
     }
 
     public String getTasks() throws IOException, InterruptedException {
@@ -98,7 +100,8 @@ public class Worker {
             answer = a*b;
         else if(symbol.contains("/"))
             answer = a/b;
-        return answer;
+        double scale = Math.pow(10, 2);
+        return (Math.round((answer) * scale)) / scale;
     }
 
     public Worker() throws URISyntaxException {
