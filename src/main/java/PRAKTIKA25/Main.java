@@ -1,36 +1,14 @@
 package PRAKTIKA25;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args) {
-        MyHashMap<String, String> hmStr = new MyHashMap<>();
-        hmStr.add("Ключ1", "Значение1");
-        hmStr.add("Ключ2", "Значение2");
-        hmStr.add("Ключ2", "Значение2");
-
-        System.out.println(hmStr.get("Ключ2"));
-
-        MyHashMap<String, Integer> hmIntStr = new MyHashMap<>();
-        hmIntStr.add("1", 1);
-        hmIntStr.add("2", 2);
-        hmIntStr.add("3", 3);
-
-        System.out.println(hmIntStr.get("3"));
-
-        for(Integer value : hmIntStr)
-        {
-            System.out.println(value);
-        }
-
-        for(String value : hmStr)
-        {
-            System.out.println(value);
-        }
-
-        for(Integer value : hmIntStr)
-        {
-            System.out.println(value);
-        }
+        MyHashMap<String, String> hm = new MyHashMap<>();
+        hm.add("Key1", "Value1");
+        hm.add("Key2", "Value2");
+        hm.add("Key3", "Value3");
+        System.out.println(hm.get("Key1"));
     }
 }
