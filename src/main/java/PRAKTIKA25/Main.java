@@ -17,5 +17,12 @@ public class Main {
         hmIntStr.add("3", 3);
 
         System.out.println(hmIntStr.get("3"));
+
+        for(Integer value : hmIntStr)
+        {
+            System.out.println(value);
+        }
+
+
     }
 }
