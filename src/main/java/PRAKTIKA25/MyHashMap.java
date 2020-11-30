@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class MyHashMap<K,V> implements HashMapInterface<K,V>{
-    private ArrayList<Node> nodes = new ArrayList<>();
+    private ArrayList<Node<K, V>> nodes = new ArrayList<>();
+    int currentIndex = 0;
 
     @Override
     public void add(K key, V value) {
@@ -36,6 +37,28 @@ public class MyHashMap<K,V> implements HashMapInterface<K,V>{
 
     @Override
     public Iterator<V> iterator() {
-        return null;
+        return new ValueIterator<>();
+    }
+
+    private class ValueIterator<V> implements Iterator<V>
+    {
+        @Override
+        public boolean hasNext() {
+            if(!(currentIndex < nodes.size()))
+            {
+                currentIndex = 0;
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
+        }
+
+        public V next()
+        {
+            return (V) nodes.get(currentIndex++).value;
+        }
     }
 }
