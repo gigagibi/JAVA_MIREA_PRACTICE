@@ -1,7 +1,8 @@
 package PRAKTIKA25;
 
 public class Node<K, V> {
-    K key; V value;
+    K key;
+    V value;
 
     public K getKey() {
         return key;
