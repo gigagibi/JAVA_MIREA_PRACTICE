@@ -10,5 +10,7 @@ public class Main {
         hm.add("Key2", "Value2");
         hm.add("Key3", "Value3");
         System.out.println(hm.get("Key3"));
+        hm.remove("Key2");
+        System.out.println(hm.get("Key2"));
     }
 }

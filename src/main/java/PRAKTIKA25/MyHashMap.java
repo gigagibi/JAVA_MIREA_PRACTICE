@@ -40,7 +40,9 @@ public class MyHashMap<K,V> implements HashMapInterface<K,V>{
 
     @Override
     public V get(K key) {
-        return getLastNode(key).getValue();
+        if(getLastNode(key) != null)
+            return getLastNode(key).getValue();
+        else return null;
     }
 
 
@@ -59,7 +61,8 @@ public class MyHashMap<K,V> implements HashMapInterface<K,V>{
         int index = key.hashCode() % table.size();
         if(table.get(index) != null)
         {
-            return table.get(index).get(table.get(index).size()-1);
+            if (table.get(index).size() != 0)
+                return table.get(index).get(table.get(index).size()-1);
         }
         return null;
     }
