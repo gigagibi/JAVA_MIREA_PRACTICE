@@ -7,8 +7,8 @@ public class MyHashMap<K,V> implements HashMapInterface<K,V>{
     private ArrayList<ArrayList<Node<K, V>>> table;
 
     @Override
-    public Iterator<V> iterator() {
-        return null;
+    public Iterator<ArrayList<Node<K,V>>> iterator() {
+        return new ValueIterator<ArrayList<Node<K,V>>>();
     }
 
     @Override
@@ -25,7 +25,7 @@ public class MyHashMap<K,V> implements HashMapInterface<K,V>{
                 Node<K,V> node = table.get(index).get(i);
                 if(key.hashCode() == node.getKey().hashCode())
                 {
-                    node = new Node<K, V>();
+                    node = new Node<K, V>(key, value);
                     table.get(index).set(i, node);
                     break;
                 }
@@ -72,6 +72,26 @@ public class MyHashMap<K,V> implements HashMapInterface<K,V>{
         for(int i = 0; i < 100; i++)
         {
             table.add(new ArrayList<Node<K, V>>());
+        }
+    }
+
+    private class ValueIterator<T> implements Iterator<ArrayList<Node<K, V>>>
+    {
+        int currentIndex = 0;
+        @Override
+        public boolean hasNext() {
+            if(currentIndex < table.size())
+                return true;
+            else
+            {
+                currentIndex = 0;
+                return false;
+            }
+        }
+
+        @Override
+        public ArrayList<Node<K, V>> next() {
+            return table.get(currentIndex++);
         }
     }
 }
