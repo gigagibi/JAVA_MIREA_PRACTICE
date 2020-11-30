@@ -10,5 +10,12 @@ public class Main {
         hmStr.add("Ключ2", "Значение2");
 
         System.out.println(hmStr.get("Ключ2"));
+
+        MyHashMap<String, Integer> hmIntStr = new MyHashMap<>();
+        hmIntStr.add("1", 1);
+        hmIntStr.add("2", 2);
+        hmIntStr.add("3", 3);
+
+        System.out.println(hmIntStr.get("3"));
     }
 }
