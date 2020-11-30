@@ -37,7 +37,7 @@ public class MyHashMap<K,V> implements HashMapInterface<K,V>{
 
     @Override
     public Iterator<V> iterator() {
-        return new ValueIterator<>();
+        return new ValueIterator<V>();
     }
 
     private class ValueIterator<V> implements Iterator<V>
