@@ -5,10 +5,11 @@ import java.util.Iterator;
 
 public class MyHashMap<K,V> implements HashMapInterface<K,V>{
     private ArrayList<ArrayList<Node<K, V>>> table;
+    private ArrayList<V> notNullValues = new ArrayList<>();
 
     @Override
-    public Iterator<ArrayList<Node<K,V>>> iterator() {
-        return new ValueIterator<ArrayList<Node<K,V>>>();
+    public Iterator<V> iterator() {
+        return new ValueIterator<V>();
     }
 
     @Override
@@ -17,14 +18,24 @@ public class MyHashMap<K,V> implements HashMapInterface<K,V>{
         if(table.get(index).size() == 0)
         {
             table.get(index).add(new Node<K, V>(key, value));
+            notNullValues.add(value);
         }
         else if(table.get(index).size() != 0)
         {
+
             for(int i = 0; i < table.get(index).size(); i++)
             {
                 Node<K,V> node = table.get(index).get(i);
                 if(key.hashCode() == node.getKey().hashCode())
                 {
+                    for(int j = 0; j < notNullValues.size(); j++)
+                    {
+                        if(notNullValues.get(j) == node.getValue())
+                        {
+                            notNullValues.set(j, value);
+                            break;
+                        }
+                    }
                     node = new Node<K, V>(key, value);
                     table.get(index).set(i, node);
                     break;
@@ -32,10 +43,13 @@ public class MyHashMap<K,V> implements HashMapInterface<K,V>{
                 else
                 {
                     table.get(index).add(node);
+                    notNullValues.add(value);
                     break;
                 }
             }
+
         }
+
     }
 
     @Override
@@ -51,6 +65,7 @@ public class MyHashMap<K,V> implements HashMapInterface<K,V>{
         if (getLastNode(key) != null) {
             V value = get(key);
             table.get(key.hashCode() % table.size()).remove(getLastNode(key));
+            notNullValues.remove(value);
             return value;
         }
         return null;
@@ -75,12 +90,12 @@ public class MyHashMap<K,V> implements HashMapInterface<K,V>{
         }
     }
 
-    private class ValueIterator<T> implements Iterator<ArrayList<Node<K, V>>>
+    private class ValueIterator<V> implements Iterator<V>
     {
         int currentIndex = 0;
         @Override
         public boolean hasNext() {
-            if(currentIndex < table.size())
+            if(currentIndex < notNullValues.size())
                 return true;
             else
             {
@@ -90,8 +105,8 @@ public class MyHashMap<K,V> implements HashMapInterface<K,V>{
         }
 
         @Override
-        public ArrayList<Node<K, V>> next() {
-            return table.get(currentIndex++);
+        public V next() {
+            return (V) notNullValues.get(currentIndex++);
         }
     }
 }
