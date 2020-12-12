@@ -23,7 +23,6 @@ public class Main {
         for(Task task : tasks)
         {
             workerClass.getDeclaredMethod(task.getType(), Data.class).invoke(worker, task.getData());
-            //System.out.println(task.toString());
         }
     }
 
